@@ -1,6 +1,6 @@
 # 快速开始
 
-1. 下载 `valleyStrem.js` 和 `valleyStream.swf` 到你的项目目录中
+1. 下载 `valleyStream.js` 和 `valleyStream.swf` 到你的项目目录中
 初始化创建一个swf容器
 
 ```
