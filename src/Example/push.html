@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="谷人云valley.ren致力于提供实时语音、视频连麦互动解决方案，为客户提供最贴合业务需求,最快最稳定最开放的实时互动音视频组件,并将长期全力以赴。">
+    <meta name="keywords" content="视频连麦, 视频互动, 语音连麦, 连麦, 多人语音, 主播连麦, 视频会议, 谷人云, 谷人语音, 电话会议, VOIP, 游戏语音, 语音互动, 谷人云">
+    <title>谷人云 - 实时连麦，从此沟通不再延迟</title>
+    <link href="css/index.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+rtmp push address:
+<input id="url" type="text" style="width: 500px;" value="rtmp://push.paoba1.qingcdn.com/live/" title="url">
+<br>
+rtmp push name:
+<input id="stream-name" type="text" style="width: 250px;" value="test" title="stream-name">  
+<h2>Streamer</h2>
+    <div id="container"></div>
+    <!-- <embed id="rtmp-streamer" src="js/RtmpStreamer3.swf" bgcolor="#999999" quality="high"
+           width="320" height="240" type="application/x-shockwave-flash"></embed> -->
+
+<br>
+<button id="publish"> push</button>
+<button id="streamer-disconnect"> disconnect</button>
+<br>
+<br>
+<br>
+camera list:
+<div id="cameraList"></div>
+<br>
+microphone
+<div id="microphone"></div>
+</body>
+
+    
+    <script src="js/valleyStream.js"></script>
+    <script>
+        // window.onload = function() {
+        
+        var getUrl = function () {
+                return document.getElementById('url').value;
+        };
+
+        var getName = function () {
+            return document.getElementById('stream-name').value;
+        };
+
+        var streamer = new ValleyStream('container', {
+            width: 320,
+            height: 240,
+            swf: 'js/valleyStream.swf'
+        });
+
+        window.valleyStreamReady = function() {
+            console.log('ready')
+            renderCameraList(streamer.getCamera());
+            renderMicrophone(streamer.getMicrophone());
+            // streamer.publish(getUrl(), getName())
+        }  
+
+        document.body.addEventListener('click', function(e) {
+            var classList = e.target.classList
+            if (classList.contains('camera-list')) {
+                removeClass('camera-list')
+                var value = e.target.innerText
+                e.target.classList.add('active')
+                const index = e.target.dataset.index
+                //console.log(index);
+                streamer.setCamera(index)
+            } else if (classList.contains('microphone-list')) {
+                removeClass('microphone-list')
+                var value = e.target.innerText
+                e.target.classList.add('active')
+                const index = e.target.dataset.index
+                console.log(index);
+                streamer.setMicrophone(index)
+            }
+        }, false)
+        function renderCameraList(data) {
+            var html = ''
+            data.forEach((element, index) => {
+                html+= '<div class="camera-list" data-index='+ index +'>'+ element +'</div>'
+            });
+            var dom  = document.getElementById('cameraList')
+            dom.innerHTML = html;
+        }
+
+        function renderMicrophone(data) {
+            var html = ''
+            data.forEach((element, index) => {
+                html+= '<div class="microphone-list" data-index='+ index +'>'+ element +'</div>'
+            });
+            var dom  = document.getElementById('microphone')
+            dom.innerHTML = html;
+        }
+
+        function removeClass( name) {
+            const list = document.getElementsByClassName(name)
+            Array.from(list).forEach(item => {
+                item.classList.remove('active')
+            })
+        }
+
+          
+        document.getElementById("publish").addEventListener("click", function () {
+           
+            streamer.publish(getUrl(), getName());
+            streamer.setCamMode(640, 480, 30)
+            streamer.setScreenSize(640, 480)
+           
+        });
+
+        document.getElementById("streamer-disconnect").addEventListener("click", function () {
+            streamer.disconnect();
+        });
+
+            // document.getElementById("player-disconnect").addEventListener("click", function () {
+            //     player.disconnect();
+            // });
+       
+   // }
+    </script>
+</body>
+
+</html>
