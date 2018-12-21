@@ -1,0 +1,47 @@
+{
+  "name": "web_push_sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --watch ",
+    "build": "webpack --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valleyRen/web_push_sdk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valleyRen/web_push_sdk/issues"
+  },
+  "homepage": "https://github.com/valleyRen/web_push_sdk#readme",
+  "dependencies": {
+    "element-ui": "^2.4.11",
+    "sass-loader": "^7.1.0",
+    "vue": "^2.5.21"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "^5.1.1",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "nodemon": "^1.12.1",
+    "npm-install-webpack-plugin": "^4.0.5",
+    "postcss-loader": "^2.1.6",
+    "style-loader": "^0.19.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "url-loader": "^0.6.2",
+    "vue-loader": "^13.7.3",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.21",
+    "webpack": "^3.12.0",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
