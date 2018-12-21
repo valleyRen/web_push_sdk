@@ -1,6 +1,6 @@
 class ValleyStream {
     constructor(id, options) {
-        const conatiner = document.getElementById(conatinerId)
+        const conatiner = document.getElementById(id)
         const stream = document.createElement('object')
         stream.setAttribute('type',"application/x-shockwave-flash")
         stream.setAttribute('data', options.swf)
