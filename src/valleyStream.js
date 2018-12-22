@@ -159,3 +159,8 @@ ValleyStream.prototype.getMicrophone = function() {
 ValleyStream.prototype.setMicrophone = function(index) {
     return this.stream.setMicrophone(index)
 }
+
+
+ValleyStream.prototype.disconnect = function() {
+    return this.stream.disconnect()
+}

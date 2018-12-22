@@ -153,6 +153,10 @@ class ValleyStream {
     setMicrophone(index) {
         return this.stream.setMicrophone(index)
     }
+
+    disconnect() {
+        return this.stream.disconnect()
+    }
     
 }
 
