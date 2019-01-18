@@ -20,6 +20,13 @@
     }
 ```
 
+2. 定义一个gobal 函数 `listenerValleyStream` 会在返回推流的状态
+```
+    window.listenValleyStream = function(status) {
+       //https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/events/NetStatusEvent.html#info
+    }
+```
+
 ### API　
 
 
